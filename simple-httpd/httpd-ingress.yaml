@@ -2,15 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: simple-httpd-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
 spec:
   rules:
-    - host: httpd.local
+    - host: 34.66.94.32.nip.io
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: httpd-service
+                name: simple-httpd-service
                 port:
                   number: 80
